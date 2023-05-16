@@ -38,5 +38,12 @@ def submit():
     collection.update_one({'_id':document_id}, {'$set': mbti_values})
     return jsonify({'msg': '저장완료'})
 
+@app.route("/statistics", methods=["GET"]) # 메인화면에서 mbti 통계를 불러오기 위한 get
+def movies1():
+    document_id = ObjectId('646361d2994e4ffc16c1cf03')
+    # mbti_values 불러오기
+    mbti_statistics = list(collection.find({'_id':document_id},{'_id':False}))
+    return jsonify({'result': mbti_statistics}) # 저장한 값 반환
+
 if __name__ == '__main__':
     app.run('0.0.0.0',port=5000,debug=True)
