@@ -90,6 +90,11 @@
             margin: 10px;
         }
 
+        .mbti-btn.selected {
+            background-color: #000;
+            color: #fff;
+        }
+
         .mbti-btn-left {
             position: absolute;
             left: 0;
@@ -123,6 +128,7 @@
             transform: translateX(-50%);
         }
 
+        /* 슬라이드에 대한 스타일링 */
         .team-desc {
             font-family: 'Gowun Dodum', sans-serif;
             font-size: 35px;
@@ -288,5 +294,26 @@
             </button>
         </div>
 </body>
+
+<script>
+    const mbtiBtns = document.querySelectorAll('.mbti-btn');
+
+    mbtiBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // 현재 버튼이 선택된 상태인지 확인
+            const isSelected = btn.classList.contains('selected');
+
+            // 모든 버튼의 선택 상태를 초기화
+            mbtiBtns.forEach(btn => {
+                btn.classList.remove('selected');
+            });
+
+            // 선택된 버튼이 아니라면 선택 상태로 변경
+            if (!isSelected) {
+                btn.classList.add('selected');
+            }
+        });
+    });
+</script>
 
 </html>
