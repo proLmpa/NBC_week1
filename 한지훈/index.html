@@ -17,6 +17,11 @@
             font-family: 'Gowun Dodum', sans-serif;
         }
 
+        body {
+          background-color: #c0bfbf;
+        }
+
+        /*로고 글씨체 및 위치 조정*/
         .logo {
             margin: 40px;
             width: auto;
@@ -40,33 +45,43 @@
         }
 
         .carousel {
-            width: 800px;
+            width: 1000px;
             height: 400px;
             
             margin: auto;
             margin-top: 80px;
         }
 
-        .carousel-inner {
-            height: 400px;
-        }
-
+        /*이미지 크기 제한*/
         .img-thumbnail {
             width: 400px;
             height: 400px;
         }
+        
+        /*하이퍼링크 효과 제거*/
+        a {
+          color: black;
+          text-decoration: none;
+        }
+
+        /*마우스 호버 시 밑줄 생성*/
+        a:hover {
+          color: #979595;
+          text-decoration: underline;
+        }
 
         .private-desc {
             font-size: 23px;
-
+            line-height: 2; /*줄 간격 조정*/
+            
             padding: 20px;
             background-color: #c0f8d7;
 
-            width: 50%;
+            width: 600px;
             height: 400px;
 
             border-radius: 10px;
-            border: 3px solid black
+            border: 4px solid white
         }
     </style>
 
@@ -79,32 +94,32 @@
         <div class="carousel-inner">
           <div class="carousel-item active" data-bs-interval="10000">
             <div class="d-flex align-items-center">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLhitiwa91IGPgyJ9164vI7LGbq4TPUckthg&usqp=CAU" class="img-thumbnail">
-                <div class="private-desc">이름 : 김희열<br>mbti : ISTJ<br>장점 : 사람들의 필요와 요구에 따라 자신을 맞출 수 있습니다.<br>자신의 스타일 : 다른 사람이 원하지 않는다면 리더의 자리를 맡고, 잘못한 건 피드백 수용<br>블로그 주소 : https://ogig0818.tistory.com/</div>
+                <img src="https://ifh.cc/g/6os1V4.jpg" class="img-thumbnail">
+                <div class="private-desc">이름 : 김희열<br>mbti : ISTJ<br>장점 : 사람들의 필요와 요구에 따라 자신을 맞출 수 있습니다.<br>자신의 스타일 : 다른 사람이 원하지 않는다면 리더의 자리를 맡고, 잘못한 건 피드백 수용<br>블로그 주소 :<a href="https://ogig0818.tistory.com/">https://ogig0818.tistory.com/</a></div>
             </div>
           </div>
           <div class="carousel-item" data-bs-interval="10000">
             <div class="d-flex align-items-center">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLhitiwa91IGPgyJ9164vI7LGbq4TPUckthg&usqp=CAU" class="img-thumbnail">
-                <div class="private-desc">이름 : 고은비<br>mbti : ISTJ<br>장점 : 고집이 세지 않고 다른 사람의 의견수용을 우선시합니다.<br>자신의 스타일 : 민폐는 되지 않기 위해 1인분 이상은 하자. 팀플은 세분화된 계획을 차근차근 진행하는 것을 선호<br>블로그 주소 : https://ggomcoding.tistory.com/</div>
+                <img src="https://ifh.cc/g/6Hp07q.jpg" class="img-thumbnail">
+                <div class="private-desc">이름 : 고은비<br>mbti : ISTJ<br>장점 : 고집이 세지 않고 다른 사람의 의견수용을 우선시합니다.<br>자신의 스타일 : 민폐는 되지 않기 위해 1인분 이상은 하자. 팀플은 세분화된 계획을 차근차근 진행하는 것을 선호<br>블로그 주소 : <a href="https://ggomcoding.tistory.com/">https://ggomcoding.tistory.com/</a></div>
             </div>
           </div>
           <div class="carousel-item" data-bs-interval="10000">
             <div class="d-flex align-items-center">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLhitiwa91IGPgyJ9164vI7LGbq4TPUckthg&usqp=CAU" class="img-thumbnail">
-                <div class="private-desc">이름 : 한지훈<br>mbti : ESTJ<br>장점 : 나이가 깡패다.<br>자신의 스타일 : 작업은 깔끔하고 보기 좋게 구성하는 것을 좋아합니다. 협업은 서로 좋은게 좋은것이라는 마인드<br>블로그 주소 : https://ggomcoding.tistory.com/</div>
+                <img src="https://ifh.cc/g/2pn33O.jpg" class="img-thumbnail">
+                <div class="private-desc">이름 : 한지훈<br>mbti : ESTJ<br>장점 : 나이가 깡패다.<br>자신의 스타일 : 작업은 깔끔하고 보기 좋게 구성하는 것을 좋아합니다. 협업은 서로 좋은게 좋은것이라는 마인드<br>블로그 주소 : <a href="https://hjh-3229.tistory.com/">https://hjh-3229.tistory.com/</a></div>
             </div>
           </div>
           <div class="carousel-item" data-bs-interval="10000">
             <div class="d-flex align-items-center">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLhitiwa91IGPgyJ9164vI7LGbq4TPUckthg&usqp=CAU" class="img-thumbnail">
-                <div class="private-desc">이름 : 송어진<br>mbti : ENTJ<br>장점 : 대화 가능한 사람이다. 힘든 일을 즐길 줄 안다.<br>자신의 스타일 : 팀플에 언제나 진심인 !열!쪙! 토론형 스타일<br>노션 주소 : https://lapis-holly-92a.notion.site/PROGRAMMING-7069dd8d9cff42a9bfa713aceb634adc 블로그 주소 : https://meitner.tistory.com/</div>
+                <img src="https://ifh.cc/g/JqxBl8.jpg" class="img-thumbnail">
+                <div class="private-desc">이름 : 송어진<br>mbti : ENTJ<br>장점 : 대화 가능한 사람이다. 힘든 일을 즐길 줄 안다.<br>자신의 스타일 : 팀플에 언제나 진심인 !열!쪙! 토론형 스타일<br>블로그 주소 : <a href="https://meitner.tistory.com/">https://meitner.tistory.com/</a></div>
             </div>
           </div>
           <div class="carousel-item" data-bs-interval="10000">
             <div class="d-flex align-items-center">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLhitiwa91IGPgyJ9164vI7LGbq4TPUckthg&usqp=CAU" class="img-thumbnail">
-                <div class="private-desc">이름 : 송이삭<br>mbti : INTP<br>장점 : 화가 안남, 목표한 바가 있으면 집중력이 높음.<br>자신의 스타일 : 원하는 바가 있으면 주장하는 편이나 방향이 같은 팀원들의 좋은 의견이 있다면 그에 따라감<br>블로그 주소 : https://sisaac.tistory.com/</div>
+                <img src="https://ifh.cc/g/J5SKL7.jpg" class="img-thumbnail">
+                <div class="private-desc">이름 : 송이삭<br>mbti : INTP<br>장점 : 화가 안남, 목표한 바가 있으면 집중력이 높음.<br>자신의 스타일 : 원하는 바가 있으면 주장하는 편이나 방향이 같은 팀원들의 좋은 의견이 있다면 그에 따라감<br>블로그 주소 : <a href="https://sisaac.tistory.com/">https://sisaac.tistory.com/</a></div>
             </div>
           </div>
         </div>
