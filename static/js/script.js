@@ -1,68 +1,5 @@
 /* 송이삭, 한지훈 코드(송어진 주석) : 선택버튼 데이터 서버-클라이언트 관련 START */
 
-
-/*송이삭 코드작성(송어진 주석) : 제출버튼 클릭시 프론트 -> 서버 데이터 전송*/
-window.onload = function () {
-    statistics();
-};
-
-function statistics() {
-    fetch('/statistics').then(res => res.json()).then(data => {
-        let rows = data['result']
-        rows.forEach((a) => {
-            let mbti_e = a['e']
-            let mbti_i = a['i']
-            let mbti_n = a['n']
-            let mbti_s = a['s']
-            let mbti_t = a['t']
-            let mbti_f = a['f']
-            let mbti_j = a['j']
-            let mbti_p = a['p']
-        })
-    })
-}
-
-/*한지훈 코드작성(송어진 주석) : mbti 선택버튼 중복제거 및 4가지 선택지 모두 선택하도록 강요*/
-$(document).ready(function () {
-    showMbti();
-});
-
-let mbti_post = [-1, -1, -1, -1]; // [ (e,i), (n,s), (t,f), (j,p) ]
-function check(mbti) {
-    if (mbti == "e" || mbti == "i") {
-        mbti_post[0] = mbti;
-    } else if (mbti == "n" || mbti == "s") {
-        mbti_post[1] = mbti;
-    } else if (mbti == "t" || mbti == "f") {
-        mbti_post[2] = mbti;
-    } else {
-        mbti_post[3] = mbti;
-    }
-    console.log(mbti_post);
-}
-
-function postMbti() {
-
-    /*한지훈 코드작성(송어진 주석) : M, B, T, I 4가지 선택지 중 하나라도 선택하지 않은 것이 있을 경우 알림창 띄우기*/
-    for (let i = 0; i < 4; i++) {
-        if (mbti_post[i] == -1) {
-            alert("Please check all elements in each of the 4");
-            return;
-        }
-    }
-
-    /*한지훈 코드작성(송어진 주석) : 위에서 M, B, T, I 선택지 담은 배열(mbti_post) 서버->클라이언트 전송 및 전송시 메시지출력&리로딩 기능*/
-    let formData = new FormData();
-    formData.append("mbti_give", mbti_post);
-
-    fetch("/mbti", { method: "POST", body: formData })
-        .then((res) => res.json())
-        .then((data) => {
-            alert(data["msg"]);
-            window.location.reload();
-        });
-}
-
 /*한지훈 코드작성(송어진 주석) : */
 const eBtn = document.getElementById('e-btn');
 const iBtn = document.getElementById('i-btn');
@@ -104,9 +41,8 @@ submitButton.addEventListener('click', () => {
 });
 /* 한지훈 코드(송어진 주석) : 선택버튼 데이터 서버-클라이언트 관련 END */
 
-//------------------------------------------------------------------------
 
-/* 김희열 코드(송어진 주석) : MBTI 버튼 시각적 활성화를 위한 기능 START */
+/* 한지훈 코드(송어진 주석) : 버튼 양자택일 여러개 동시 클릭 START*/
 
 //(송어진 주석) 위에 있는 한지훈 변수랑 충돌해서 분리함(mbtiBtns 1,2)
 const mbtiBtns2 = document.querySelectorAll('.mbti-btn');
@@ -114,6 +50,10 @@ const mbtiBtns2 = document.querySelectorAll('.mbti-btn');
 mbtiBtns2.forEach(btn => {
     btn.addEventListener('click', () => {
         // 대립되는 버튼들의 선택 상태를 초기화합니다.
+
+        // 현재 버튼이 선택된 상태인지 확인
+        const isSelected = btn.classList.contains('selected');
+
         conflictingPairs.forEach(pair => {
             if (pair.includes(btn)) {
                 pair.forEach(conflictingBtn => {
@@ -122,19 +62,19 @@ mbtiBtns2.forEach(btn => {
             }
         });
 
-        //(송어진 주석) 모든 버튼의 선택 상태를 초기화 //이거 왜 있는지 이해안됨 아래 코드(if문)랑 중복?
-        mbtiBtns2.forEach(btn => {
-            btn.classList.remove('selected');
-        });
-
-        // 현재 버튼이 선택된 상태인지 확인 //? 아래가 이상하므로 이거 필요업?
-        const isSelected = btn.classList.contains('selected');
-
         //(송어진 주석) 선택된 버튼이 아니라면 선택상태로 변경 //이건 무슨 말인지 확인 필요? 거꾸로 아님? 위에랑 중복?
         if (!isSelected) {
             btn.classList.add('selected');
         }
     });
+});
+/* 한지훈 코드(송어진 주석) : 버튼 양자택일 END*/
+
+//------------------------------------------------------------------------
+
+/*송이삭 코드작성 : */
+$(document).ready(function () {
+    showMbti();
 });
 
 
@@ -149,7 +89,19 @@ function showMbti() {
 }
 /*송이삭 코드작성(송어진 주석) : 최종적으로 팀 mbti 통계데이터 프론트->서버 및 전송시 메시지출력 END*/
 
-/*김희열 코드(송어진 주석) : 시각적 활성화를 위한 기능 END*/
+
+/*송이삭 코드작성(송어진 주석) : mbti 선택버튼 중복제거 및 4가지 선택지 모두 선택하도록 강요*/
+function postMbti() {
+    let formData = new FormData();
+    formData.append("mbti_give", mbti_post);
+
+    fetch("/mbti", { method: "POST", body: formData })
+        .then((res) => res.json())
+        .then((data) => {
+            alert(data["msg"]);
+            window.location.reload();
+        });
+}
 
 //------------------------------------------------------------------------
 
@@ -266,5 +218,4 @@ function mbti_posting() {
     }
 }
 
-
-  /*김희열 코드(송어진 주석) : 팀 전체 mbti 통계 END*/
+/*김희열 코드(송어진 주석) : 팀 전체 mbti 통계 END*/
