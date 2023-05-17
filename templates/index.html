@@ -41,52 +41,44 @@
 
     <div class="team-intro" id="team-mbti">
         <div class="mbti-vote">
-            <button class="mbti-btn mbti-btn-left" id="e-btn" value="e" data-mbti-type="e" onclick="check(this.value)"
-                onclick="mbti_IE(2)">E</button><!--(송어진 주석; 모든 버튼태그에 적용되는 주석) data-mbti-type="e" ?onclick 이벤트 충돌 해결해야 함-->
+            <button class="mbti-btn mbti-btn-left" id="e-btn" value="e" data-mbti-type="e" onclick="mbti_IE(2)">E</button><!--(송어진 주석; 모든 버튼태그에 적용되는 주석) data-mbti-type="e" ?onclick 이벤트 충돌 해결해야 함-->
             <p class="mbti-question mbti-question-left"> 왜 집에만 있어?</p>
             <p class="mbti-divider"> vs. </p>
             <p class="mbti-question mbti-question-right"> 왜 나가? </p>
-            <button class="mbti-btn mbti-btn-right" id="i-btn" value="i" data-mbti-type="i" onclick="check(this.value)"
-                onclick="mbti_IE(1)">I</button>
+            <button class="mbti-btn mbti-btn-right" id="i-btn" value="i" data-mbti-type="i" onclick="mbti_IE(1)">I</button>
         </div>
         <div class="mbti-vote">
-            <button class="mbti-btn mbti-btn-left" id="n-btn" value="n" data-mbti-type="n" onclick="check(this.value)"
-                onclick="mbti_NS(3)">N</button>
+            <button class="mbti-btn mbti-btn-left" id="n-btn" value="n" data-mbti-type="n" onclick="mbti_NS(3)">N</button>
             <p class="mbti-question mbti-question-left">난 오늘도 꿈을 꾼다 </p>
             <p class="mbti-divider"> vs. </p>
             <p class="mbti-question mbti-question-right"> 발 닦고 잠이나 자 </p>
-            <button class="mbti-btn mbti-btn-right" id="s-btn" value="s" data-mbti-type="s" onclick="check(this.value)"
-                onclick="mbti_NS(4)">S</button>
+            <button class="mbti-btn mbti-btn-right" id="s-btn" value="s" data-mbti-type="s" onclick="mbti_NS(4)">S</button>
         </div>
         <div class="mbti-vote">
-            <button class="mbti-btn mbti-btn-left" id="t-btn" value="t" data-mbti-type="t" onclick="check(this.value)"
-                onclick="mbti_TF(5)">T</button>
+            <button class="mbti-btn mbti-btn-left" id="t-btn" value="t" data-mbti-type="t" onclick="mbti_TF(5)">T</button>
             <p class="mbti-question mbti-question-left"> ...? </p>
             <p class="mbti-divider"> vs. </p>
             <p class="mbti-question mbti-question-right"> ㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜ</p>
-            <button class="mbti-btn mbti-btn-right" id="f-btn" value="f" data-mbti-type="f" onclick="check(this.value)"
-                onclick="mbti_TF(6)">F</button>
+            <button class="mbti-btn mbti-btn-right" id="f-btn" value="f" data-mbti-type="f" onclick="mbti_TF(6)">F</button>
         </div>
         <div class="mbti-vote">
-            <button class="mbti-btn mbti-btn-left" id="j-btn" value="j" data-mbti-type="j" onclick="check(this.value)"
-                onclick="mbti_PJ(8)">J</button>
+            <button class="mbti-btn mbti-btn-left" id="j-btn" value="j" data-mbti-type="j" onclick="mbti_PJ(8)">J</button>
             <p class="mbti-question mbti-question-left"> 계획부터 짜자 </p>
             <p class="mbti-divider"> vs. </p>
             <p class="mbti-question mbti-question-right"> 내가 가는 곳이 곧 길이다 </p>
-            <button class="mbti-btn mbti-btn-right" id="p-btn" value="p" data-mbti-type="p" onclick="check(this.value)"
-                onclick="mbti_PJ(7)">P</button>
+            <button class="mbti-btn mbti-btn-right" id="p-btn" value="p" data-mbti-type="p" onclick="mbti_PJ(7)">P</button>
         </div>
 
 
-        <!--(송어진 주석) 제출하기 버튼 전체적으로 속성값 충돌 확인 요망-->
         <div>
             <div class="final-mbti" class="team-mbti"></div>
             <div class="submit">
-                <button class="mbti-submit" id="submit-button" onclick="mbti_posting()" onclick="postMbti()">제출</button>
+                <button class="mbti-submit" id="submit-button" onclick="mbti_posting()" onclick="postMbti()">제출</button><!--(송어진 주석) 제출하기 버튼 전체적으로 속성값 충돌 확인 요망-->
             </div>
         </div>
     </div>
 
+    
     <!--Autoplaying carousels-->
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-inner">
@@ -94,7 +86,7 @@
                 <div class="d-flex align-items-center">
                     <img src="https://ifh.cc/g/6os1V4.jpg" class="img-thumbnail">
                     <div class="myContent">
-                        <p class="myName"><b>소개: </b>김희열</p>
+                        <p class="myName"><b>이름: </b>김희열 (팀장)</p>
                         <p class="myMBTI"><b>MBTI: </b>ISTJ</p>
                         <p class="myStr"><b>자신만의 강점: </b>사람들의 필요와 요구에 따라 자신을 맞출 수 있습니다.</p>
                         <p class="myStyle"><b>자신의 스타일: </b>다른 사람이 원하지 않으면 리더를 자청하고, 잘못한 건 피드백 받습니다</p>
