@@ -1,8 +1,7 @@
 ##한지훈, 송이삭, 김희열
 
 # 송이삭
-#(송어진) url_for는 JS,CSS 외부파일로 분리를 위해
-from flask import Flask, render_template, request, jsonify, url_for 
+from flask import Flask, render_template, request, jsonify, url_for #(송어진) url_for는 JS,CSS 외부파일로 분리를 위해
 app = Flask(__name__)
 
 from pymongo import MongoClient
@@ -11,7 +10,7 @@ client = MongoClient('mongodb+srv://sparta:test@cluster0.gcgk5vj.mongodb.net/?re
 from bson.objectid import ObjectId
 
 ##한지훈
-client = MongoClient('mongodb+srv://sparta:test@cluster0.oid4wb8.mongodb.net/?retryWrites=true&w=majority')
+client = MongoClient('mongodb+srv://sparta:test@cluster0.oid4wb8.mongodb.net/?retryWrites=true&w=majority') ##누구꺼?
 database = client['dbsparta']
 collection = database['mbti_data']
 db = client.dbsparta
