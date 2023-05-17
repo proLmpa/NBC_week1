@@ -1,0 +1,181 @@
+<!--김희열 : 전체 뼈대 만들기,추가 기능 구현 및 클라이언트-서버 연동작업(mbti 통계 기능 작업)-->
+<!--고은비 : 전체 디자인 작업-->
+<!--한지훈 : 기능 구현 및 클라이언트-서버 연동작업(mbti 선택버튼 설정 제약걸기)-->
+<!--송어진 : 전체병합,충돌해결,최종수정,static 파일 외부분리 및 연동작업-->
+<!--송이삭 : 기능 구현 및 클라이언트-서버 연동작업(mbti 선택 및 통계의 제출버튼 클릭 시 이벤트 처리)-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>올T 소개 페이지</title>
+
+    <!--Bootstarp-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+
+    <!--jQuery-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"
+        integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous">
+        </script>
+
+    <!--(송어진) CSS 외부파일소스. JS 외부파일소스는 body태그 안 제일 밑-->
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
+    <!--(송어진 주석) css를 외부파일을 평소하던대로 하면 주소를 제대로 찍어줄 수 없어 link 걸리지 않음. 서버없이 html파일을 만들 때 쓰는 주소와 서버에 알려주는 파일 주소는 다름. 따라서 서버에 주소를 전달해주는 url_for 사용-->
+</head>
+
+<body>
+    <div class="team-title">
+        <p>팀 소개 웹 페이지: &nbsp 올T (All T)</p><br><br>
+    </div>
+    <div class="subtitle">
+        <h2>우리 팀의 MBTI는?</h2>
+    </div>
+
+    <div class="team-intro" id="team-mbti">
+        <div class="mbti-vote">
+            <button class="mbti-btn mbti-btn-left" id="e-btn" value="e" data-mbti-type="e" onclick="check(this.value)"
+                onclick="mbti_IE(2)">E</button><!--(송어진 주석; 모든 버튼태그에 적용되는 주석) data-mbti-type="e" ?onclick 이벤트 충돌 해결해야 함-->
+            <p class="mbti-question mbti-question-left"> 왜 집에만 있어?</p>
+            <p class="mbti-divider"> vs. </p>
+            <p class="mbti-question mbti-question-right"> 왜 나가? </p>
+            <button class="mbti-btn mbti-btn-right" id="i-btn" value="i" data-mbti-type="i" onclick="check(this.value)"
+                onclick="mbti_IE(1)">I</button>
+        </div>
+        <div class="mbti-vote">
+            <button class="mbti-btn mbti-btn-left" id="n-btn" value="n" data-mbti-type="n" onclick="check(this.value)"
+                onclick="mbti_NS(3)">N</button>
+            <p class="mbti-question mbti-question-left">난 오늘도 꿈을 꾼다 </p>
+            <p class="mbti-divider"> vs. </p>
+            <p class="mbti-question mbti-question-right"> 발 닦고 잠이나 자 </p>
+            <button class="mbti-btn mbti-btn-right" id="s-btn" value="s" data-mbti-type="s" onclick="check(this.value)"
+                onclick="mbti_NS(4)">S</button>
+        </div>
+        <div class="mbti-vote">
+            <button class="mbti-btn mbti-btn-left" id="t-btn" value="t" data-mbti-type="t" onclick="check(this.value)"
+                onclick="mbti_TF(5)">T</button>
+            <p class="mbti-question mbti-question-left"> ...? </p>
+            <p class="mbti-divider"> vs. </p>
+            <p class="mbti-question mbti-question-right"> ㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜㅜ</p>
+            <button class="mbti-btn mbti-btn-right" id="f-btn" value="f" data-mbti-type="f" onclick="check(this.value)"
+                onclick="mbti_TF(6)">F</button>
+        </div>
+        <div class="mbti-vote">
+            <button class="mbti-btn mbti-btn-left" id="j-btn" value="j" data-mbti-type="j" onclick="check(this.value)"
+                onclick="mbti_PJ(8)">J</button>
+            <p class="mbti-question mbti-question-left"> 계획부터 짜자 </p>
+            <p class="mbti-divider"> vs. </p>
+            <p class="mbti-question mbti-question-right"> 내가 가는 곳이 곧 길이다 </p>
+            <button class="mbti-btn mbti-btn-right" id="p-btn" value="p" data-mbti-type="p" onclick="check(this.value)"
+                onclick="mbti_PJ(7)">P</button>
+        </div>
+
+
+        <!--(송어진 주석) 제출하기 버튼 전체적으로 속성값 충돌 확인 요망-->
+        <div>
+            <div class="final-mbti" class="team-mbti"></div>
+            <div class="submit">
+                <button class="mbti-submit" id="submit-button" onclick="mbti_posting()" onclick="postMbti()">제출</button>
+            </div>
+        </div>
+    </div>
+
+    <!--Autoplaying carousels-->
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="10000">
+                <div class="d-flex align-items-center">
+                    <img src="https://ifh.cc/g/6os1V4.jpg" class="img-thumbnail">
+                    <div class="myContent">
+                        <p class="myName"><b>소개: </b>김희열</p>
+                        <p class="myMBTI"><b>MBTI: </b>ISTJ</p>
+                        <p class="myStr"><b>자신만의 강점: </b>사람들의 필요와 요구에 따라 자신을 맞출 수 있습니다.</p>
+                        <p class="myStyle"><b>자신의 스타일: </b>다른 사람이 원하지 않으면 리더를 자청하고, 잘못한 건 피드백 받습니다</p>
+                        <br>
+                        <p class="myBlog"><b>블로그(Tistory): </b><a href=" https://ogig0818.tistory.com/">링크</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="10000">
+                <div class="d-flex align-items-center">
+                    <img src="https://ifh.cc/g/6Hp07q.jpg" class="img-thumbnail">
+                    <div class="myContent">
+                        <p class="myName"><b>소개: </b>고은비</p>
+                        <p class="myMBTI"><b>MBTI: </b>ISTJ</p>
+                        <p class="myStr"><b>자신만의 장점: </b>고집이 세지 않고 다른 사람의 의견수용을 우선시합니다.</p>
+                        <p class="myStyle"><b>자신의 스타일: </b>민폐는 되지 않기 위해 1인분 이상은 하자. 팀플은 세분화된 계획을 차근차근 진행하는 것을 선호</p>
+                        <br>
+                        <p class="myBlog"><b>블로그(Tistory): </b><a href="https://ggomcoding.tistory.com/">링크</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="10000">
+                <div class="d-flex align-items-center">
+                    <img src="https://ifh.cc/g/t06QrT.jpg" class="img-thumbnail">
+                    <div class="myContent">
+                        <p class="myName"><b>소개: </b>한지훈</p>
+                        <p class="myMBTI"><b>MBTI: </b>ESTJ</p>
+                        <p class="myStr"><b>자신만의 장점: </b>나이가 깡패다.</p>
+                        <p class="myStyle"><b>자신의 스타일: </b>작업은 깔끔하고 보기 좋게 구성하는 것을 좋아합니다. 협업은 서로 좋은게 좋은것이라는 마인드</p>
+                        <br>
+                        <p class="myBlog"><b>블로그(Tistory): </b><a href="https://ggomcoding.tistory.com/">링크</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="10000">
+                <div class="d-flex align-items-center">
+                    <img src="https://ifh.cc/g/JqxBl8.jpg" class="img-thumbnail">
+                    <div class="myContent">
+                        <p class="myName"><b>소개: </b>송어진</p>
+                        <p class="myMBTI"><b>MBTI: </b>ENTJ</p>
+                        <p class="myStr"><b>자신만의 장점: </b>대화 가능한 사람이다. 힘든 일을 즐길 줄 안다.</p>
+                        <p class="myStyle"><b>자신의 스타일: </b>팀플에 언제나 진심인 !열!쪙! 토론형 스타일</p>
+                        <br>
+                        <p class="myBlog">
+                            <b>노션(Notion): </b><a
+                                href="https://lapis-holly-92a.notion.site/PROGRAMMING-7069dd8d9cff42a9bfa713aceb634adc">링크</a><br>
+                            <b>블로그(Tistory): </b><a href="https://meitner.tistory.com/">링크</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item" data-bs-interval="10000">
+                <div class="d-flex align-items-center">
+                    <img src="https://ifh.cc/g/J5SKL7.jpg" class="img-thumbnail">
+                    <div class="myContent">
+                        <p class="myName"><b>소개: </b>송이삭</p>
+                        <p class="myMBTI"><b>MBTI: </b>INTP</p>
+                        <p class="myStr"><b>자신만의 장점: </b>화가 안남, 목표한 바가 있으면 집중력이 높음.</p>
+                        <p class="myStyle"><b>자신의 스타일: </b>원하는 바가 있으면 주장하는 편이나 방향이 같은 팀원들의 좋은 의견이 있다면 그에 따라감</p>
+                        <br<<p class="myBlog">
+                            <b>깃헙(GitHub): </b><a href="https://github.com/isaacsong-2">링크</a><br>
+                            <b>블로그(Tistory): </b><a href="https://sisaac.tistory.com/">링크</a>
+                            </p>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </div>
+</body>
+
+<!--(송어진) CSS, JS 외부파일 위치-->
+<script type="text/javascript" src="{{url_for('static', filename='js/script.js')}}"></script>
+
+</html>
