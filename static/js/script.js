@@ -78,7 +78,6 @@ $(document).ready(function () {
 });
 
 
-/*송이삭 코드작성(송어진 주석) : 최종적으로 팀 mbti 통계데이터 프론트->서버 및 전송시 메시지출력 START*/
 function showMbti() {
     fetch("/mbti")
         .then((res) => res.json())
@@ -90,7 +89,6 @@ function showMbti() {
 /*송이삭 코드작성(송어진 주석) : 최종적으로 팀 mbti 통계데이터 프론트->서버 및 전송시 메시지출력 END*/
 
 
-/*송이삭 코드작성(송어진 주석) : mbti 선택버튼 중복제거 및 4가지 선택지 모두 선택하도록 강요*/
 function postMbti() {
     let formData = new FormData();
     formData.append("mbti_give", mbti_post);
