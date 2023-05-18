@@ -1,6 +1,56 @@
-/* 송이삭, 한지훈 코드(송어진 주석) : 선택버튼 데이터 서버-클라이언트 관련 START */
+/* 웹사이트 오픈 시 바로 실행할 기능 */
+$(document).ready(function () {
+    member_desc()
+    mbti_result()
+});
 
-/*한지훈 코드작성(송어진 주석) : */
+/* 전체 멤버 조회 기능 */
+function member_desc() {
+    fetch('/member').then(res => res.json()).then((data) => {
+        let desc = data['result']
+        
+        $('#desc').empty()
+        desc.forEach((a) => {
+            let name = a['name']
+            let mbti = a['mbti']
+            let strength = a['strength']
+            let style = a['style']
+            let blog = a['blog']
+            let img = a['img']
+
+            let activeClass = a === desc[0] ? 'active' : '';
+
+            let temp_desc = `<div class="carousel-item ${activeClass}" data-bs-interval="10000">
+                                <div class="d-flex align-items-center">
+                                    <img src="${img}" class="img-thumbnail">
+                                    <div class="myContent" >
+                                        <p class="myName"><b>소개: </b>${name}</p>
+                                        <p class="myMBTI"><b>MBTI: </b>${mbti}</p>
+                                        <p class="myStr"><b>자신만의 강점: </b>${strength}</p>
+                                        <p class="myStyle"><b>자신의 스타일: </b>${style}</p>
+                                        <br>
+                                        <p class="myBlog"><b>블로그(Tistory): </b><a href="${blog}"</a>${blog}</p>
+                                    </div>
+                                </div>
+                            </div>`
+            $('#desc').append(temp_desc)
+        })
+
+        let temp_button = `<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                                data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                                data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>`
+        $('#desc').append(temp_button)
+    })
+}
+
+/* 선택버튼 데이터 서버-클라이언트 관련 */
 const eBtn = document.getElementById('e-btn');
 const iBtn = document.getElementById('i-btn');
 const nBtn = document.getElementById('n-btn');
@@ -10,10 +60,9 @@ const fBtn = document.getElementById('f-btn');
 const jBtn = document.getElementById('j-btn');
 const pBtn = document.getElementById('p-btn');
 
-//(송어진 주석) 위에 있는 한지훈 변수랑 충돌해서 분리함(mbtiBtns 1,2)
 const mbtiBtns = document.querySelectorAll('.mbti-btn');
 
-// 대립되는 버튼 쌍을 배열로 정의합니다.
+/* 대립되는 버튼 쌍 배열 */
 const conflictingPairs = [
     [eBtn, iBtn],
     [nBtn, sBtn],
@@ -21,10 +70,9 @@ const conflictingPairs = [
     [jBtn, pBtn]
 ];
 
+/* 버튼 양자 택일 기능 */
 mbtiBtns.forEach(btn => {
     btn.addEventListener('click', () => {
-        // 대립되는 버튼들의 선택 상태를 초기화합니다.
-
         // 현재 버튼이 선택된 상태인지 확인
         const isSelected = btn.classList.contains('selected');
 
@@ -36,19 +84,14 @@ mbtiBtns.forEach(btn => {
             }
         });
 
-        //(송어진 주석) 선택된 버튼이 아니라면 선택상태로 변경 //이건 무슨 말인지 확인 필요? 거꾸로 아님? 위에랑 중복?
+        // 선택된 버튼이 아니라면 선택상태로 변경
         if (!isSelected) {
             btn.classList.add('selected');
         }
     });
 });
-/* 한지훈 코드(송어진 주석) : 버튼 양자택일 END*/
 
-/*김희열 코드(송어진 주석) : 팀 전체 mbti 통계 START*/
-$(document).ready(function () {
-    mbti_result()
-});
-
+/* 팀 전체 mbti 통계 기능 */
 var IE = -1
 var NS = -2
 var TF = -3
@@ -156,5 +199,3 @@ function mbti_posting() {
         })
     }
 }
-
-/*김희열 코드(송어진 주석) : 팀 전체 mbti 통계 END*/
