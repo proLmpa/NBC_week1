@@ -10,8 +10,8 @@ const fBtn = document.getElementById('f-btn');
 const jBtn = document.getElementById('j-btn');
 const pBtn = document.getElementById('p-btn');
 
-//(송어진 주석) 아래에 있는 김희열 변수랑 충돌해서 분리함(mbtiBtns 1,2)
-const mbtiBtns1 = [eBtn, iBtn, nBtn, sBtn, tBtn, fBtn, jBtn, pBtn];
+//(송어진 주석) 위에 있는 한지훈 변수랑 충돌해서 분리함(mbtiBtns 1,2)
+const mbtiBtns = document.querySelectorAll('.mbti-btn');
 
 // 대립되는 버튼 쌍을 배열로 정의합니다.
 const conflictingPairs = [
@@ -20,34 +20,8 @@ const conflictingPairs = [
     [tBtn, fBtn],
     [jBtn, pBtn]
 ];
-const submitButton = document.getElementById('submit-button');
 
-submitButton.addEventListener('click', () => {
-    // 데이터베이스의 값을 업데이트합니다.
-    const mbtiValues = {};
-    mbtiBtns1.forEach(button => {
-        const mbtiType = button.dataset.mbtiType;
-        mbtiValues[mbtiType] = button.classList.contains('selected') ? 1 : 0;
-    });
-
-    // mbtiValues 객체를 서버로 전송하는 코드를 추가해야 합니다.
-    fetch('/submit', { method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(mbtiValues) }).then((res) => res.json()).then((data) => {
-        alert(data['msg'])
-        window.location.reload();
-    })
-        .catch(error => {
-            console.log('데이터 전송 중에 오류가 발생했습니다:', error);
-        });
-});
-/* 한지훈 코드(송어진 주석) : 선택버튼 데이터 서버-클라이언트 관련 END */
-
-
-/* 한지훈 코드(송어진 주석) : 버튼 양자택일 여러개 동시 클릭 START*/
-
-//(송어진 주석) 위에 있는 한지훈 변수랑 충돌해서 분리함(mbtiBtns 1,2)
-const mbtiBtns2 = document.querySelectorAll('.mbti-btn');
-
-mbtiBtns2.forEach(btn => {
+mbtiBtns.forEach(btn => {
     btn.addEventListener('click', () => {
         // 대립되는 버튼들의 선택 상태를 초기화합니다.
 
@@ -69,39 +43,6 @@ mbtiBtns2.forEach(btn => {
     });
 });
 /* 한지훈 코드(송어진 주석) : 버튼 양자택일 END*/
-
-//------------------------------------------------------------------------
-
-/*송이삭 코드작성 : */
-$(document).ready(function () {
-    showMbti();
-});
-
-
-function showMbti() {
-    fetch("/mbti")
-        .then((res) => res.json())
-        .then((data) => {
-            let teamMbti = data["result"];
-            $(".team-mbti").append(`현재 저희팀의 MBTI는 ${teamMbti}입니다`);
-        });
-}
-/*송이삭 코드작성(송어진 주석) : 최종적으로 팀 mbti 통계데이터 프론트->서버 및 전송시 메시지출력 END*/
-
-
-function postMbti() {
-    let formData = new FormData();
-    formData.append("mbti_give", mbti_post);
-
-    fetch("/mbti", { method: "POST", body: formData })
-        .then((res) => res.json())
-        .then((data) => {
-            alert(data["msg"]);
-            window.location.reload();
-        });
-}
-
-//------------------------------------------------------------------------
 
 /*김희열 코드(송어진 주석) : 팀 전체 mbti 통계 START*/
 $(document).ready(function () {

@@ -1,10 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Nanum+Gothic+Coding&family=Poor+Story&display=swap');
-
 * {
     font-family: 'IBM Plex Sans KR', sans-serif;
-
-
-
 }
 
 /* 전체 body에 대한 스타일링 */
@@ -141,11 +137,6 @@ body {
     transform: translateX(-50%);
 }
 
-.submit {
-    margin-top: 50px;
-    text-align: center;
-}
-
 .submit #submit-button {
     height: 50px;
     width: 70px;
@@ -160,6 +151,16 @@ body {
 }
 
 /* 슬라이드에 대한 스타일링 */
+.team-desc {
+    font-family: 'Gowun Dodum', sans-serif;
+    font-size: 35px;
+    text-decoration: none;
+    width: auto;
+    height: 200px;
+    padding: 10px;
+    margin-left: 20px;
+}
+
 .carousel {
     width: 70%;
     height: 500px;
@@ -195,6 +196,28 @@ body {
     display: flex;
     flex-direction: column;
     overflow: hidden;
+}
+
+.post-btn {
+    width: 200px;
+    height: 50px;
+
+    background-color: transparent;
+    color: white;
+
+    border-radius: 50px;
+    border: 1px solid white;
+
+    margin-top: 10px;
+}
+
+.post-btn>button:hover {
+    border: 2px solid white;
+}
+
+.submit {
+    margin-top: 50px;
+    text-align: center;
 }
 
 .team-mbti {
