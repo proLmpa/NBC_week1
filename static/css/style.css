@@ -36,6 +36,54 @@ body {
     text-align: center;
 }
 
+/* 슬라이드에 대한 스타일링 */
+.team-desc {
+    font-family: 'Gowun Dodum', sans-serif;
+    font-size: 35px;
+    text-decoration: none;
+    width: auto;
+    height: 200px;
+    padding: 10px;
+    margin-left: 20px;
+}
+
+.carousel {
+    width: 70%;
+    height: 500px;
+    margin: auto;
+    margin-top: 80px;
+}
+
+.carousel-inner {
+    height: 450px;
+}
+
+.img-thumbnail {
+    width: 450px;
+    height: 450px;
+    object-fit: cover;
+    flex: 0 0 auto;
+    border-radius: 50%;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-right: 20px;
+
+}
+
+.myContent {
+    flex: 1 1 auto;
+    margin-left: 10px;
+    font-size: 20px;
+    border: 1px solid #a9a9a9;
+    border-radius: 10px;
+    padding: 10px;
+    width: calc(40%);
+    height: 450px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
 /* 블로그 링크에 대한 스타일링 */
 .myBlog a {
     color: #333;
@@ -137,90 +185,15 @@ body {
     transform: translateX(-50%);
 }
 
-.submit #submit-button {
-    height: 50px;
-    width: 70px;
-    font-size: 20px;
-    border-radius: 5%;
-    border: none;
-    background-color: #ffffff;
-    color: #000000;
-    cursor: pointer;
-    margin: 10px;
-    margin-top: 50px;
-}
-
-/* 슬라이드에 대한 스타일링 */
-.team-desc {
-    font-family: 'Gowun Dodum', sans-serif;
-    font-size: 35px;
-    text-decoration: none;
-    width: auto;
-    height: 200px;
-    padding: 10px;
-    margin-left: 20px;
-}
-
-.carousel {
-    width: 70%;
-    height: 500px;
-    margin: auto;
-    margin-top: 80px;
-}
-
-.carousel-inner {
-    height: 450px;
-}
-
-.img-thumbnail {
-    width: 450px;
-    height: 450px;
-    object-fit: cover;
-    flex: 0 0 auto;
-    border-radius: 50%;
-    border-radius: 10px;
-    overflow: hidden;
-    margin-right: 20px;
-
-}
-
-.myContent {
-    flex: 1 1 auto;
-    margin-left: 10px;
-    font-size: 20px;
-    border: 1px solid #a9a9a9;
-    border-radius: 10px;
-    padding: 10px;
-    width: calc(40%);
-    height: 450px;
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-}
-
-.post-btn {
-    width: 200px;
-    height: 50px;
-
-    background-color: transparent;
-    color: white;
-
-    border-radius: 50px;
-    border: 1px solid white;
-
-    margin-top: 10px;
-}
-
-.post-btn>button:hover {
-    border: 2px solid white;
-}
-
-.submit {
-    margin-top: 50px;
+.mbti-result {
     text-align: center;
 }
 
-.team-mbti {
-    margin-top: 50px;
-    text-align: center;
+.final-mbti {
+    padding-top: 50px;
+    margin-bottom: 50px;
+}
+
+.btn {
+    font-size: 20px;
 }

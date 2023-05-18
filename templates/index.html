@@ -26,9 +26,13 @@
         integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous">
         </script>
 
-    <!--(송어진) CSS 외부파일소스. JS 외부파일소스는 body태그 안 제일 밑-->
+    <!--CSS 외부파일소스-->
     <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
-    <!--(송어진 주석) css를 외부파일을 평소하던대로 하면 주소를 제대로 찍어줄 수 없어 link 걸리지 않음. 서버없이 html파일을 만들 때 쓰는 주소와 서버에 알려주는 파일 주소는 다름. 따라서 서버에 주소를 전달해주는 url_for 사용-->
+    <!--
+        일반적인 외부파일 참조방식으로는 css 주소를 찾을 수 없어 link 연결이 불가능함.
+        이는 서버 없이 html파일을 만들 때 쓰는 주소와 서버에 알려주는 파일 주소는 다르기 때문임.
+        따라서 서버에 주소를 전달해주는 url_for 사용
+    -->
 </head>
 
 <body>
@@ -47,9 +51,9 @@
     <div class="subtitle">
         <h2>우리 팀의 MBTI는?</h2>
     </div>
+
     <div class="team-intro" id="team-mbti">
         <div class="mbti-vote">
-            <!--(송어진 주석; 모든 버튼태그에 적용되는 주석) data-mbti-type="e" ?onclick 이벤트 충돌 해결해야 함-->
             <button class="mbti-btn mbti-btn-left" id="e-btn" onclick="mbti_IE(2)">E</button>
             <p class="mbti-question mbti-question-left"> 왜 집에만 있어?</p>
             <p class="mbti-divider"> vs. </p>
@@ -78,18 +82,16 @@
             <button class="mbti-btn mbti-btn-right" id="p-btn" onclick="mbti_PJ(7)">P</button>
         </div>
 
-
-        <!--(송어진 주석) 제출하기 버튼 전체적으로 속성값 충돌 확인 요망-->
-        <div>
+        <div class="mbti-result">
             <div class="final-mbti"></div>
-            <div class="submit">
-                <button class="mbti-submit" id="submit-button" onclick="mbti_posting()">제출</button>
-            </div>
+            <button type="button" class="btn btn-success" onclick="mbti_post()">제출</button>
+            <span style="margin: 0 10px;"></span>   <!-- 버튼 사이 간격을 띄우기 위한 margin 추가 -->
+            <button type="button" class="btn btn-warning" onclick="mbti_init()">초기화</button>
         </div>
     </div>
 </body>
 
-<!--(송어진) CSS, JS 외부파일 위치-->
+<!--JS 외부파일 위치-->
 <script type="text/javascript" src="{{url_for('static', filename='js/script.js')}}"></script>
 
 </html>

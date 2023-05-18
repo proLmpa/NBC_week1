@@ -10,6 +10,12 @@ db = client.dbsparta
 def home():
     return render_template('index.html')
 
+@app.route("/member", methods=["GET"])
+def member_get():
+    all_members = list(db.member.find({}, {'_id': False}))
+    return jsonify({'result': all_members})
+
+
 @app.route("/mbti", methods=["POST"])
 def mbti_post():
     IE = request.form['IE_give']
@@ -26,17 +32,18 @@ def mbti_post():
     
     db.mbti.insert_one(doc)
     
-    return jsonify({'msg': '저장 완료'})
+    return jsonify({'msg': '입력 저장 완료!'})
 
 @app.route("/mbti", methods=["GET"])
 def mbti_get():
     all_mbti = list(db.mbti.find({},{'_id':False}))
     return jsonify({'result': all_mbti})
 
-@app.route("/member", methods=["GET"])
-def member_get():
-    all_members = list(db.member.find({}, {'_id': False}))
-    return jsonify({'result': all_members})
+@app.route("/mbti", methods=["DELETE"])
+def mbti_init():
+    db.mbti.delete_many({})
+    
+    return jsonify({'msg':'mbti 초기화!'})
 
 if __name__ == '__main__':
    app.run('0.0.0.0', port=5000, debug=True)

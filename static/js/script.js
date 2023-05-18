@@ -9,7 +9,6 @@ function member_desc() {
     fetch('/member').then(res => res.json()).then((data) => {
         let desc = data['result']
         
-        $('#desc').empty()
         desc.forEach((a) => {
             let name = a['name']
             let mbti = a['mbti']
@@ -36,16 +35,17 @@ function member_desc() {
             $('#desc').append(temp_desc)
         })
 
-        let temp_button = `<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
-                                data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
-                                data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>`
+        let temp_button = `
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>`
         $('#desc').append(temp_button)
     })
 }
@@ -97,32 +97,43 @@ var NS = -2
 var TF = -3
 var PJ = -4
 
+/* 전체 mbti 계산 기능 */
 function mbti_result() {
     fetch('/mbti').then((res) => res.json()).then((data) => {
         let mbti = data['result']
-        let str = '우리 팀의 mbti는 '
 
-        total_counting(mbti).then((a) => {
-            if (a['I'] > a['E']) str += 'I'
-            else str += 'E'
+        let total_cnt = mbti.length
+        if(total_cnt == 0){
+            $('.final-mbti').text('아직 아무도 제출하지 않았습니다.')
+        } else {
+            let str = `참여자 ${total_cnt}명의 종합 MBTI는 `
+            total_count(mbti).then((a) => {
+                if (a['I'] > a['E']) str += 'I'
+                else if(a['I'] == a['E']) str += '?'
+                else str += 'E'
+    
+                if (a['N'] > a['S']) str += 'N'
+                else if(a['N'] == a['S']) str += '?'
+                else str += 'S'
+    
+                if (a['T'] > a['F']) str += 'T'
+                else if(a['T'] == a['F']) str += '?'
+                else str += 'F'
+    
+                if (a['P'] > a['J']) str += 'P'
+                else if(a['P'] == a['J']) str += '?'
+                else str += 'J'
+    
+                str += ' 입니다'
+    
+                $('.final-mbti').text(str)
+            })
+        }
 
-            if (a['N'] > a['S']) str += 'N'
-            else str += 'S'
-
-            if (a['T'] > a['F']) str += 'T'
-            else str += 'F'
-
-            if (a['P'] > a['J']) str += 'P'
-            else str += 'J'
-
-            str += ' 입니다'
-
-            $('.final-mbti').text(str)
-        })
     })
 }
 
-async function total_counting(mbti_list) {
+async function total_count(mbti_list) {
     try {
         let I = 0
         let E = 0
@@ -183,7 +194,7 @@ function mbti_PJ(n) {
     PJ = n
 }
 
-function mbti_posting() {
+function mbti_post() {
     if (IE < 0 || NS < 0 || TF < 0 || PJ < 0)
         alert("mbti 성향을 모두 선택해주세요!")
     else {
@@ -195,6 +206,16 @@ function mbti_posting() {
 
         fetch('/mbti', { method: "POST", body: formData }).then((res) => res.json()).then((data) => {
             console.log(data['msg'])
+            window.location.reload()
+        })
+    }
+}
+
+function mbti_init() {
+    if(confirm('MBTI DB를 초기화하시겠습니까?')) {
+        
+        fetch('/mbti', {method: "DELETE"}).then((res) => res.json()).then((data) => {
+            alert(data['msg'])
             window.location.reload()
         })
     }
