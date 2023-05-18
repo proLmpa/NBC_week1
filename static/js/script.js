@@ -23,7 +23,9 @@ function member_desc() {
                                 <div class="d-flex align-items-center">
                                     <img src="${img}" class="img-thumbnail">
                                     <div class="myContent" >
-                                        <p class="myName"><b>소개: </b>${name}</p>
+                                        <p class="myName"><h3><b>
+                                            <span style="background: linear-gradient(to top, #f8ec38 30%, transparent 50%)">${name}</span>
+                                        </b></h3></p>
                                         <p class="myMBTI"><b>MBTI: </b>${mbti}</p>
                                         <p class="myStr"><b>자신만의 강점: </b>${strength}</p>
                                         <p class="myStyle"><b>자신의 스타일: </b>${style}</p>
@@ -32,21 +34,8 @@ function member_desc() {
                                     </div>
                                 </div>
                             </div>`
-            $('#desc').append(temp_desc)
+            $('.carousel-inner').append(temp_desc)
         })
-
-        let temp_button = `
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
-                data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
-                data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>`
-        $('#desc').append(temp_button)
     })
 }
 
