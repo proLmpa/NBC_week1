@@ -9,7 +9,7 @@
 <br>
     
 저희 팀은 모두 이과이고, 각자 MBTI에 T가 들어가서 팀 이름을 **_‘All T’_**로 지었습니다.!  
-<img width="80%" src="https://user-images.githubusercontent.com/51445608/239481394-130e8709-50f9-4946-9c46-11c10446d80a.png"/>
+<img width="60%" src="https://user-images.githubusercontent.com/51445608/239481394-130e8709-50f9-4946-9c46-11c10446d80a.png"/>
 
 👋 팀원 & 역할  
 이름|역할|한마디|
@@ -30,4 +30,4 @@
 
 ✨ 프로젝트 시연
 
-<iframe width="702" height="395" src="https://www.youtube.com/embed/0i0m8-ukIHg" title="올T 미니프로젝트 시연 (음성 X)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+[![Video Label](http://img.youtube.com/vi/0i0m8-ukIHg/0.jpg)](https://www.youtube.com/watch?v=0i0m8-ukIHg))
