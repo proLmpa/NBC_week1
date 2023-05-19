@@ -9,7 +9,7 @@
 <br>
     
 저희 팀은 모두 이과이고, 각자 MBTI에 T가 들어가서 팀 이름을 **_‘All T’_**로 지었습니다.!  
-[Untitled](https://github.com/proLmpa/NBC_week1/assets/51445608/77d75e73-ac35-4835-b404-2f205f041cd5)
+<img width="{해상도 비율}" src="https://github.com/proLmpa/NBC_week1/issues/2#issue-1716852578"/>
 
 👋 팀원 & 역할  
 이름|역할|한마디|
