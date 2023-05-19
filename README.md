@@ -6,7 +6,7 @@
 
 <br>
     
-저희 팀은 모두 이과이고, 각자 MBTI에 T가 들어가서 팀 이름을 **_‘All T’_**로 지었습니다.!  
+저희 팀은 모두 이과이고, 각자 MBTI에 T가 들어가서 팀 이름을 **‘All T’** 로 지었습니다.!  
 <img width="60%" src="https://user-images.githubusercontent.com/51445608/239481394-130e8709-50f9-4946-9c46-11c10446d80a.png"/>
 
 👋 팀원 & 역할  
